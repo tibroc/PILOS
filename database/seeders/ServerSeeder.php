@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Server;
+use App\Models\Server;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
 
@@ -21,7 +21,7 @@ class ServerSeeder extends Seeder
 
         foreach ($servers as $server){
             $server = Server::create(['base_url' => $server->url,'salt' => $server->secret,'status'=>true,'name'=>$faker->unique()->word, 'status'=>\App\Enums\ServerStatus::ONLINE]);
-            foreach(\App\ServerPool::all() as $serverPool){
+            foreach(\App\Models\ServerPool::all() as $serverPool){
                 $serverPool->servers()->attach($server);
             }
         }

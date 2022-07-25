@@ -11,7 +11,7 @@ class CreateRoom extends FormRequest
     public function rules()
     {
         return [
-            'roomType' => ['required', 'exists:App\RoomType,id', new ValidRoomType(Auth::user())],
+            'roomType' => ['required', 'exists:App\Models\RoomType,id', new ValidRoomType(Auth::user())],
             'name'     => 'required|string|min:2|max:'.config('bigbluebutton.room_name_limit'),
         ];
     }

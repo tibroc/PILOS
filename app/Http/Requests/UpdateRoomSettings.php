@@ -29,7 +29,7 @@ class UpdateRoomSettings extends FormRequest
             'defaultRole'                    => ['required',Rule::in([RoomUserRole::USER,RoomUserRole::MODERATOR])],
             'allowGuests'                    => 'required|boolean',
             'lobby'                          => ['required',new EnumValue(RoomLobby::class)],
-            'roomType'                       => ['required', 'exists:App\RoomType,id', new ValidRoomType($this->room->owner)],
+            'roomType'                       => ['required', 'exists:App\Models\RoomType,id', new ValidRoomType($this->room->owner)],
             'duration'                       => 'nullable|numeric|min:1',
             'maxParticipants'                => 'nullable|numeric|min:1',
             'name'                           => 'required|string|min:2|max:'.config('bigbluebutton.room_name_limit'),

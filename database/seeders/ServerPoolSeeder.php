@@ -14,9 +14,9 @@ class ServerPoolSeeder extends Seeder
     public function run()
     {
         // Only create server pools if none exits
-        if (\App\ServerPool::all()->count() == 0) {
-            $default = \App\ServerPool::create(['name' => 'Standard', 'description' => '']);
-            $default->servers()->sync(\App\Server::all());
+        if (\App\Models\ServerPool::all()->count() == 0) {
+            $default = \App\Models\ServerPool::create(['name' => 'Standard', 'description' => '']);
+            $default->servers()->sync(\App\Models\Server::all());
         }
     }
 }
